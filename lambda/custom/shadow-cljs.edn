@@ -1,0 +1,11 @@
+{:dependencies [[cider/cider-nrepl "0.18.0"]]
+
+ :source-paths ["src/dev" "src/main"]
+
+ :nrepl        {:port 8230}
+
+ :builds       {:app
+                {:target           :node-library
+                 :output-to        "index.js"
+                 :exports          {:handler app.core/handler}
+                 :compiler-options {:optimizations :simple}}}}

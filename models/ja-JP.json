@@ -1,0 +1,160 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "音程クイズ",
+      "types": [
+        {
+          "name": "LIST_OF_NOTES",
+          "values": [
+            {
+              "name": {
+                "value": "ド"
+              }
+            },
+            {
+              "name": {
+                "value": "レ"
+              }
+            }
+          ]
+        },
+        {
+          "name": "LIST_OF_INTERVALS",
+          "values": [
+            {
+              "name": {
+                "value": "メジャーセカンド"
+              }
+            },
+            {
+              "name": {
+                "value": "長２度"
+              }
+            },
+            {
+              "name": {
+                "value": "メジャーサード"
+              }
+            },
+            {
+              "name": {
+                "value": "長３度"
+              }
+            },
+            {
+              "name": {
+                "value": "パーフェクトフォース"
+              }
+            },
+            {
+              "name": {
+                "value": "完全４度"
+              }
+            },
+            {
+              "name": {
+                "value": "パーフェクトフィフス"
+              }
+            },
+            {
+              "name": {
+                "value": "完全５度"
+              }
+            },
+            {
+              "name": {
+                "value": "メジャーシックス"
+              }
+            },
+            {
+              "name": {
+                "value": "長６度"
+              }
+            },
+            {
+              "name": {
+                "value": "メジャーセブンス"
+              }
+            },
+            {
+              "name": {
+                "value": "長７度"
+              }
+            }
+          ]
+        }
+
+      ],
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+          ]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": [
+          ]
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": [
+          ]
+        },
+        {
+          "name": "BaseNoteIntent",
+          "slots": [
+            {
+              "name": "Note",
+              "type": "LIST_OF_NOTES"
+            }
+          ],
+          "samples": [
+            "{Note}",
+            "{Note} でお願い",
+            "おまかせ"
+          ]
+        },
+        {
+          "name": "CheckingAnswerIntent",
+          "slots": [
+            {
+              "name": "Interval",
+              "type": "LIST_OF_INTERVALS"
+            }
+          ],
+          "samples": [
+            "{Interval}",
+            "{Interval} だね",
+            "{Interval} かな"
+          ]
+        },
+        {
+          "name": "AnswerIntent",
+          "samples": [
+            "答えをおしえて",
+            "答え"
+          ]
+        },
+        {
+          "name": "AnotherQuestionIntent",
+          "samples": [
+            "もう一問",
+            "次の問題を出して",
+            "次の問題"
+          ]
+        }
+      ]
+    }
+  }
+}
