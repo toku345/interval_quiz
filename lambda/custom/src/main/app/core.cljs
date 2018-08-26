@@ -1,29 +1,6 @@
 (ns app.core
-  (:require ["ask-sdk-core" :as alexa]))
-
-(defonce skill-builder
-  (-> alexa
-      .-SkillBuilders
-      .custom))
-
-(def LaunchRequestHandler
-  #js {:canHandle
-       (fn [handler-input]
-         (= (-> handler-input
-                .-requestEnvelope
-                .-request
-                .-type)
-            "LaunchRequest"))
-
-       :handle
-       (fn [handler-input]
-         (let [speech-text "チャオっす！"]
-           (-> handler-input
-             .-responseBuilder
-             (.speak speech-text)
-             (.reprompt speech-text)
-             (.withSimpleCard "Hello World" speech-text)
-             .getResponse)))})
+  (:require ["ask-sdk-core" :as alexa]
+            [app.handler.launch-request :as launch-request]))
 
 (def ChaossuIntentHandler
   #js {:canHandle
@@ -137,9 +114,15 @@
              .getResponse))})
 
 
+
+(defonce skill-builder
+  (-> alexa
+      .-SkillBuilders
+      .custom))
+
 (def ^:export handler
   (-> skill-builder
-      (.addRequestHandlers LaunchRequestHandler
+      (.addRequestHandlers launch-request/handler
                            ChaossuIntentHandler
                            HelpIntentHandler
                            CancelAndStopIntentHandler
