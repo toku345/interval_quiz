@@ -1,7 +1,8 @@
 (ns app.core
   (:require ["ask-sdk-core" :as alexa]
             [app.handler.launch-request :as launch-request]
-            [app.handler.base-note-intent :as base-note-intent]))
+            [app.handler.base-note-intent :as base-note-intent]
+            [app.handler.checking-answer-intent :as checking-answer-intent]))
 
 (def HelpIntentHandler
   #js {:canHandle
@@ -101,6 +102,7 @@
   (-> skill-builder
       (.addRequestHandlers launch-request/handler
                            base-note-intent/handler
+                           checking-answer-intent/handler
                            HelpIntentHandler
                            CancelAndStopIntentHandler
                            SessionEndedRequestHandler)
