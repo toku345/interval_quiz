@@ -20,9 +20,9 @@
                  "AMAZON.HelpIntent")))
        :handle
        (fn [handler-input]
-         (let [speech-text ("音程クイズは音程トレーニングのためのスキルです。"
-                            "私が問題を出すので、再生された音程を答えてください。"
-                            "どの音から始めますか？")]
+         (let [speech-text (str "音程クイズは音程トレーニングのためのスキルです。"
+                                "私が問題を出すので、再生された音程を答えてください。"
+                                "どの音から始めますか？")]
            (-> handler-input
              .-responseBuilder
              (.speak speech-text)
