@@ -1,5 +1,6 @@
 .shadow-cljs
 index.js
+out
 
 # Created by https://www.gitignore.io/api/clojure,node
 

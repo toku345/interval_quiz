@@ -1,6 +1,6 @@
 {:dependencies [[cider/cider-nrepl "0.18.0"]]
 
- :source-paths ["src/dev" "src/main"]
+ :source-paths ["src/dev" "src/main" "src/test"]
 
  :nrepl        {:port 8230}
 
@@ -8,4 +8,10 @@
                 {:target           :node-library
                  :output-to        "index.js"
                  :exports          {:handler app.core/handler}
-                 :compiler-options {:optimizations :simple}}}}
+                 :compiler-options {:optimizations :simple}}
+
+                :test
+                {:target    :node-test
+                 :ns-regexp "-test$"
+                 :output-to "out/node-tests.js"
+                 :autorun   true}}}
