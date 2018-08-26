@@ -20,12 +20,13 @@
                  "AMAZON.HelpIntent")))
        :handle
        (fn [handler-input]
-         (let [speech-text "You can say hello to me!"]
+         (let [speech-text ("音程クイズは音程トレーニングのためのスキルです。"
+                            "私が問題を出すので、再生された音程を答えてください。"
+                            "どの音から始めますか？")]
            (-> handler-input
              .-responseBuilder
              (.speak speech-text)
              (.reprompt speech-text)
-             (.withSimpleCard "Hello World" speech-text)
              .getResponse)))})
 
 (def CancelAndStopIntentHandler
@@ -50,7 +51,7 @@
                      "AMAZON.StopIntent"))))
        :handle
        (fn [handler-input]
-         (let [speech-text "Goodbye!"]
+         (let [speech-text "また挑戦してくださいね！"]
            (-> handler-input
              .-responseBuilder
              (.speak speech-text)
@@ -85,11 +86,12 @@
        :handle
        (fn [handler-input error]
          (println "Error handeled: " (.-message error))
-         (-> handler-input
-             .-responseBuilder
-             (.speak "Sorry, I can't understand the command. Please say again.")
-             (.reprompt "Sorry, I can't understand the command. Please say again.")
-             .getResponse))})
+         (let [speech-text "ごめんなさい。聞き取れませんでした。もう一度おっしゃってください。"]
+             (-> handler-input
+              .-responseBuilder
+              (.speak speech-text)
+              (.reprompt speech-text)
+              .getResponse)))})
 
 
 
