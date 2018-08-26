@@ -1,30 +1,7 @@
 (ns app.core
   (:require ["ask-sdk-core" :as alexa]
-            [app.handler.launch-request :as launch-request]))
-
-(def ChaossuIntentHandler
-  #js {:canHandle
-       (fn [handler-input]
-         (and (= (-> handler-input
-                     .-requestEnvelope
-                     .-request
-                     .-type)
-                 "IntentRequest")
-              (= (-> handler-input
-                     .-requestEnvelope
-                     .-request
-                     .-intent
-                     .-name)
-                 "HelloWorldIntent")))
-       :handle
-       (fn [handler-input]
-         (let [speech-text "チャオっす！"]
-           (-> handler-input
-             .-responseBuilder
-             (.speak speech-text)
-             (.reprompt speech-text)
-             (.withSimpleCard "Hello World" speech-text)
-             .getResponse)))})
+            [app.handler.launch-request :as launch-request]
+            [app.handler.base-note-intent :as base-note-intent]))
 
 (def HelpIntentHandler
   #js {:canHandle
@@ -123,7 +100,7 @@
 (def ^:export handler
   (-> skill-builder
       (.addRequestHandlers launch-request/handler
-                           ChaossuIntentHandler
+                           base-note-intent/handler
                            HelpIntentHandler
                            CancelAndStopIntentHandler
                            SessionEndedRequestHandler)
