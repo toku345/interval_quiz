@@ -56,7 +56,6 @@
              .-responseBuilder
              (.speak speech-text)
              (.reprompt speech-text)
-             (.withSimpleCard "Hello World" speech-text)
              .getResponse)))})
 
 (def SessionEndedRequestHandler
