@@ -41,11 +41,14 @@
   (contains? (get interval-key-ja-map answer-interval-key) user-interval-ja))
 
 (defn- make-speech-text [user-interval-ja answer-interval-key]
-  (if (correct-answer? user-interval-ja answer-interval-key)
-    (str "正解！" user-interval-ja "です。")
-    (do
-      (let [inteval-ja (first (get interval-key-ja-map answer-interval-key))]
-        (str "不正解。答えは" inteval-ja "です。")))))
+  (str
+   (if (correct-answer? user-interval-ja answer-interval-key)
+     (str "正解！" user-interval-ja "です。")
+     (do
+       (let [inteval-ja (first (get interval-key-ja-map answer-interval-key))]
+         (str "不正解。答えは" inteval-ja "です。"))))
+   "また挑戦してくださいね！"))
+
 
 (defn- handle [handler-input]
   (let [user-interval-ja    (get-interval-ja handler-input)
@@ -55,8 +58,8 @@
     (-> handler-input
         .-responseBuilder
         (.speak speech-text)
-        (.reprompt speech-text)
         .getResponse)))
+
 
 (def handler
   #js {:canHandle can-handle?
