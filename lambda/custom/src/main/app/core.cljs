@@ -1,7 +1,6 @@
 (ns app.core
   (:require ["ask-sdk-core" :as alexa]
-            [app.handler.launch-request :as launch-request]
-            [app.handler.base-note-intent :as base-note-intent]
+            [app.handler.launch-base-note-intent :as launch-base-note-intent]
             [app.handler.checking-answer-intent :as checking-answer-intent]))
 
 (def HelpIntentHandler
@@ -101,8 +100,7 @@
 
 (def ^:export handler
   (-> skill-builder
-      (.addRequestHandlers launch-request/handler
-                           base-note-intent/handler
+      (.addRequestHandlers launch-base-note-intent/handler
                            checking-answer-intent/handler
                            HelpIntentHandler
                            CancelAndStopIntentHandler
