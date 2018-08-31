@@ -1,5 +1,7 @@
 const alexaTest = require('alexa-skill-test-framework');
 
+console.log(__dirname);
+
 alexaTest.initialize(
   require('../lambda/custom/index.js'),
   "amzn1.ask.skill.00000000-0000-0000-0000-000000000000",

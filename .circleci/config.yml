@@ -1,0 +1,81 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk-node
+
+    steps:
+      - checkout
+
+      ## cljs layer test ##
+
+      # Cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-cljs-{{ checksum "lambda/custom/package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-cljs-
+      - restore_cache:
+          keys:
+          - v1-dependencies-maven-{{ checksum "lambda/custom/shadow-cljs.edn" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-maven-
+
+      - run:
+          working_directory: lambda/custom
+          command: |
+            yarn install
+
+      - save_cache:
+          paths:
+            - lambda/custom/node_modules
+          key: v1-dependencies-cljs-{{ checksum "lambda/custom/package.json" }}
+
+      - run:
+          working_directory: lambda/custom
+          command: |
+            yarn run shadow-cljs compile test
+
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-maven-{{ checksum "lambda/custom/shadow-cljs.edn" }}
+
+      - run:
+          working_directory: lambda/custom
+          command: |
+            yarn run shadow-cljs release app
+
+
+
+      ## alexa skil hanlder test ##
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-node-{{ checksum "test/package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-cljs-
+
+      - run:
+          working_directory: test
+          command: |
+            yarn install
+            sudo npm install -g mocha
+
+      - save_cache:
+          paths:
+            - test/node_modules
+          key: v1-dependencies-node-{{ checksum "test/package.json" }}
+
+      # run tests!
+      - run:
+          working_directory: test
+          command: |
+            sudo mocha interval_quiz-tests.js
