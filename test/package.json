@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "alexa-skill-test-framework": "^1.2.2",
+    "mocha": "^5.2.0"
+  }
+}
