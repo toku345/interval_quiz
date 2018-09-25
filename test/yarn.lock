@@ -35,8 +35,8 @@ aws-sdk-mock@^1.7.0:
     traverse "^0.6.6"
 
 aws-sdk@^2.3.0:
-  version "2.306.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.306.0.tgz#104f69b6d2291ba94cb401105514c242be51aac4"
+  version "2.307.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.307.0.tgz#53a5906d36061d62e7b2ceb243920c7ef8feac97"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -181,7 +181,7 @@ minimatch@3.0.4, minimatch@^3.0.4:
 
 minimist@0.0.8:
   version "0.0.8"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
+  resolved "http://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
 mkdirp@0.5.1:
   version "0.5.1"

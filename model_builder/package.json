@@ -3,15 +3,12 @@
     "watch": "shadow-cljs watch app",
     "test": "shadow-cljs compile test"
   },
-  "dependencies": {
-    "ask-sdk-core": "^2.0.0",
-    "ask-sdk-model": "^1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "shadow-cljs": "^2.4.0",
     "source-map-support": "^0.5.8"
   },
   "author": "toku345",
   "license": "EPL-2.0",
-  "description": "Interval Quiz's lambda backend."
+  "description": "Interval Quiz's model builder."
 }

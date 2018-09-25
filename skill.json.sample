@@ -1,0 +1,44 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "ja-JP": {
+          "name": "音程クイズ",
+          "summary": "音程聞き分け能力トレーニング",
+          "description": "音程クイズは再生されたトレーニングのためのスキルです。",
+          "examplePhrases": [
+            "アレクサ 音程クイズ を開いて",
+            "アレクサ 音程クイズ をスタートして"
+          ],
+          "keywords": [
+            "音程",
+            "クイズ",
+            "インターバル",
+            "音感"
+          ],
+          "smallIconUri": "",
+          "largeIconUri": ""
+        }
+      },
+      "isAvailableWorldwide": false,
+      "testingInstructions": "'アレクサ、音程クイズを開いて'と言うと、サウンドを再生するので、その音程（例: メジャーセカンド、長7度 など）を答えてください。",
+      "category": "MUSIC_AND_AUDIO_KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": ["JP"]
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/custom"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}

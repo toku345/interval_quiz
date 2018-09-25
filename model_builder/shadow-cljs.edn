@@ -1,0 +1,18 @@
+{:dependencies [[cider/cider-nrepl "0.18.0"]
+                [cljs-node-io "1.1.2"]]
+
+ :source-paths ["src/dev" "src/main" "src/test"]
+
+ :nrepl        {:port 8230}
+
+ :builds       {:app
+                {:target           :node-script
+                 :main             app.core/main
+                 :output-to        "app.js"
+                 :compiler-options {:optimizations :simple}}
+
+                :test
+                {:target    :node-test
+                 :ns-regexp "-test$"
+                 :output-to "out/node-tests.js"
+                 :autorun   true}}}

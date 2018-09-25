@@ -1,13 +1,13 @@
-(ns app.handler.checking-answer-intent)
+(ns app.handler.checking-answer-intent
+  (:require [app.question-master :as question-master]))
 
 (def ^:private interval-key-ja-map
   {"M2" #{"メジャーセカンド" "ちょうにど"}
    "M3" #{"メジャーサード" "ちょうさんど"}
-   "P4" #{"パーフェクトフォース" "かんぜんよんど" "かんぜんしど"}
+   "P4" #{"パーフェクトフォース" "かんぜんよんど"}
    "P5" #{"パーフェクトフィフス" "かんぜんごど"},
    "M6" #{"メジャーシックス" "ちょうろくど"},
-   "M7" #{"メジャーセブンス" "ちょうななど" "ちょうしちど"}})
-
+   "M7" #{"メジャーセブンス" "ちょうななど"}})
 
 (defn- can-handle? [handler-input]
   (and (= (-> handler-input
@@ -37,12 +37,9 @@
       .-Interval
       .-value))
 
-(defn- correct-answer? [user-interval-ja answer-interval-key]
-  (contains? (get interval-key-ja-map answer-interval-key) user-interval-ja))
-
 (defn- make-speech-text [user-interval-ja answer-interval-key]
   (str
-   (if (correct-answer? user-interval-ja answer-interval-key)
+   (if (question-master/same-interval? answer-interval-key user-interval-ja)
      (str "正解！" user-interval-ja "です。")
      (do
        (let [inteval-ja (first (get interval-key-ja-map answer-interval-key))]

@@ -20,6 +20,7 @@
 
     $ git clone https://gitlab.com/toku345/interval_quiz
     $ cd /path/to/interval_quiz
+    $ cp skil.json.sample skil.json
     $ cp .ask/config.template ./.ask/config
 
 

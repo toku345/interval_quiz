@@ -1,61 +1,11 @@
 (ns app.core
   (:require ["ask-sdk-core" :as alexa]
-            [app.handler.launch-base-note-intent :as launch-base-note-intent]
-            [app.handler.checking-answer-intent :as checking-answer-intent]))
+            [app.handler.launch-request :as launch-request]
+            [app.handler.checking-answer-intent :as checking-answer-intent]
+            [app.handler.help-intent :as help-intent]
+            [app.handler.yes-intent :as yes-intent]
+            [app.handler.no-and-cancel-and-stop-intent :as no-and-cancel-and-stop-intent]))
 
-(def HelpIntentHandler
-  #js {:canHandle
-       (fn [handler-input]
-         (and (= (-> handler-input
-                     .-requestEnvelope
-                     .-request
-                     .-type)
-                 "IntentRequest")
-              (= (-> handler-input
-                     .-requestEnvelope
-                     .-request
-                     .-intent
-                     .-name)
-                 "AMAZON.HelpIntent")))
-       :handle
-       (fn [handler-input]
-         (let [speech-text (str "音程クイズは音程トレーニングのためのスキルです。"
-                                "私が問題を出すので、再生された音程を答えてください。"
-                                "どの音から始めますか？")]
-           (-> handler-input
-             .-responseBuilder
-             (.speak speech-text)
-             (.reprompt speech-text)
-             .getResponse)))})
-
-(def CancelAndStopIntentHandler
-  #js {:canHandle
-       (fn [handler-input]
-         (and (= (-> handler-input
-                     .-requestEnvelope
-                     .-request
-                     .-type)
-                 "IntentRequest")
-              (or (= (-> handler-input
-                         .-requestEnvelope
-                         .-request
-                         .-intent
-                         .-name)
-                     "AMAZON.CancelIntent")
-                  (= (-> handler-input
-                         .-requestEnvelope
-                         .-request
-                         .-intent
-                         .-name)
-                     "AMAZON.StopIntent"))))
-       :handle
-       (fn [handler-input]
-         (let [speech-text "また挑戦してくださいね！"]
-           (-> handler-input
-             .-responseBuilder
-             (.speak speech-text)
-             (.reprompt speech-text)
-             .getResponse)))})
 
 (def SessionEndedRequestHandler
   #js {:canHandle
@@ -100,10 +50,11 @@
 
 (def ^:export handler
   (-> skill-builder
-      (.addRequestHandlers launch-base-note-intent/handler
+      (.addRequestHandlers launch-request/handler
                            checking-answer-intent/handler
-                           HelpIntentHandler
-                           CancelAndStopIntentHandler
+                           help-intent/handler
+                           yes-intent/handler
+                           no-and-cancel-and-stop-intent/handler
                            SessionEndedRequestHandler)
       (.addErrorHandlers ErrorHandler)
       .lambda))
