@@ -4,8 +4,8 @@
       "locales": {
         "ja-JP": {
           "name": "音程クイズ",
-          "summary": "音程聞き分け能力トレーニング",
-          "description": "音程クイズは再生されたトレーニングのためのスキルです。",
+          "summary": "音程聞き分けクイズ",
+          "description": "スキルを開始すると2つの音を再生するので、再生終了後その2音の音程（例: メジャーセカンド、長7度 など）を答えてください。その後、スキルが答えた音程の正誤を教えてくれます。",
           "examplePhrases": [
             "アレクサ 音程クイズ を開いて",
             "アレクサ 音程クイズ をスタートして"
@@ -21,7 +21,7 @@
         }
       },
       "isAvailableWorldwide": false,
-      "testingInstructions": "'アレクサ、音程クイズを開いて'と言うと、サウンドを再生するので、その音程（例: メジャーセカンド、長7度 など）を答えてください。",
+      "testingInstructions": "スキルを開始すると2つの音を再生するので、再生終了後その2音の音程（例: メジャーセカンド、長7度 など）を答えてください。その後、スキルが答えた音程の正誤を教えてくれます。",
       "category": "MUSIC_AND_AUDIO_KNOWLEDGE_AND_TRIVIA",
       "distributionCountries": ["JP"]
     },
