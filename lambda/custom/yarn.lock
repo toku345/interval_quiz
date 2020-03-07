@@ -6,9 +6,10 @@ ask-sdk-core@^2.0.0:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/ask-sdk-core/-/ask-sdk-core-2.0.7.tgz#0f2300aa99a5bd92c0bd700d1ed92ff8da1f83b9"
 
-ask-sdk-model@^1.0.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/ask-sdk-model/-/ask-sdk-model-1.5.0.tgz#7b2b9b5b9a22affec96b1867652c7ae286aff9a3"
+ask-sdk-model@^1.25.2:
+  version "1.26.0"
+  resolved "https://registry.yarnpkg.com/ask-sdk-model/-/ask-sdk-model-1.26.0.tgz#28dde85c887be2b7c355eab26d377cecbe0e0bad"
+  integrity sha512-Flkw4rowQtuaSdUON6/OLml85lZMJQRsac9AtF+pKcp06gmiNX0x8x4/u4WBbzBUd5PoFoYBs79i3VnmQ+Vn5w==
 
 asn1.js@^4.0.0:
   version "4.10.1"

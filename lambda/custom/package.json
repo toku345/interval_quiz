@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "ask-sdk-core": "^2.0.0",
-    "ask-sdk-model": "^1.0.0"
+    "ask-sdk-model": "^1.25.2"
   },
   "devDependencies": {
     "shadow-cljs": "^2.4.0",
