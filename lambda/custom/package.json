@@ -4,7 +4,7 @@
     "test": "shadow-cljs compile test"
   },
   "dependencies": {
-    "ask-sdk-core": "^2.0.0",
+    "ask-sdk-core": "^2.7.0",
     "ask-sdk-model": "^1.0.0"
   },
   "devDependencies": {
